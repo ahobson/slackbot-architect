@@ -1,0 +1,18 @@
+FROM python:3.7-slim
+
+RUN set -x \
+  && apt-get update -qq \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        nodejs npm \
+        && apt-get clean -y
+
+RUN mkdir /app
+WORKDIR /app
+
+RUN pip install pipenv
+
+COPY Pipfile Pipfile.lock ./
+RUN pipenv install --deploy --system --dev
+
+RUN npm install --unsafe-perm -g @architect/architect
+RUN pip install awscli

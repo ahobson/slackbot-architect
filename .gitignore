@@ -1,0 +1,6 @@
+/docker-compose.override.yml
+/requirements.txt
+/sam.json
+/sam.yaml
+*.pyc
+/.coverage

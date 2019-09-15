@@ -1,0 +1,41 @@
+---
+repos:
+  - repo: git://github.com/pre-commit/pre-commit-hooks
+    rev: v2.2.3
+    hooks:
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-json
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=no]
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+
+  - repo: git://github.com/igorshubovych/markdownlint-cli
+    rev: v0.17.0
+    hooks:
+      - id: markdownlint
+
+  - repo: git://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.17.0
+    hooks:
+      - id: terraform_docs
+      - id: terraform_fmt
+      - id: terraform_validate
+
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.7.7
+    hooks:
+      - id: flake8
+
+  - repo: https://github.com/ambv/black
+    rev: stable
+    hooks:
+      - id: black
+        language_version: python3.7
+        # args:
+        #   [--check]  # don't reformat the files; return 1 if they would be reformatted
