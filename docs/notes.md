@@ -3,27 +3,21 @@
 TL;DR: architect does not seem as polished as serverless, nor does it
 seem that non Javascript languages are first class citizens.
 
+* Seems to require a get index lambda
+* Doesn't seem to recover from a failed deployment gracefully
+* No way to undeploy lambdas after deployment
+* The logs functionality only seems to work for the get index lambda
+
 ## Installation
 
-### Failed on macos
+### macos
 
-    $ brew install npm
-    ...
-    Pouring node-12.10.0.mojave.bottle.tar.gz
+It doesn't work with the default node in homebrew, node12.  It does
+work with `node@8`.
 
-    $ npm install -g @architect/architect
-    ...
-    ../src/batch.cc:91:3: error: no matching member function for call to 'ToObject'
-    LD_STRING_OR_BUFFER_TO_SLICE(key, keyBuffer, key)
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    ...
-    fatal error: too many errors emitted, stopping now [-ferror-limit=]
-    7 warnings and 20 errors generated.
-    make: *** [Release/obj.target/leveldown/src/batch.o] Error 1
+### docker
 
-### Works using docker
-
-At least `arc init` works
+It was easy enough to get it working with docker
 
 ## Development
 
